@@ -1,270 +1,365 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-        <meta name="description" content="" />
-        <meta name="author" content="" />
-        <title>mab68.github.io</title>
-        <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
-        <!-- Font Awesome icons (free version)-->
-        <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
-        <!-- Google fonts-->
-        <link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet" />
-        <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet" />
-        <!-- Core theme CSS (includes Bootstrap)-->
-        <link href="css/styles.css" rel="stylesheet" />
-    </head>
-    <body id="page-top">
-        <!-- Navigation-->
-        <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
-            <div class="container px-4 px-lg-5">
-                <a class="navbar-brand" href="#page-top"></a>
-                <button class="navbar-toggler navbar-toggler-right" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-                    Menu
-                    <i class="fas fa-bars"></i>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarResponsive">
-                    <ul class="navbar-nav ms-auto">
-                        <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#technical">Technical Skills</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
-                    </ul>
-                </div>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Mark Bishop | Astrophysicist & Data Scientist</title>
+  <meta name="description" content="Mark Bishop is an astrophysicist and data scientist specialising in turbulence, spectral analysis and Bayesian inference on noisy, incomplete data." />
+  <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,500;9..144,600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #fafaf7;
+      --surface: #ffffff;
+      --text: #1b1f2a;
+      --muted: #5b6272;
+      --line: #e5e5df;
+      --accent: #3b5bdb;
+      --accent-soft: #e8ecfd;
+      --hero-from: #0f1530;
+      --hero-to: #26346b;
+      --radius: 14px;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root:not([data-theme="light"]) {
+        --bg: #0c0f1a;
+        --surface: #141a2b;
+        --text: #e8eaf2;
+        --muted: #9aa3b8;
+        --line: #232b42;
+        --accent: #8ea2ff;
+        --accent-soft: #1d2646;
+      }
+    }
+    :root[data-theme="dark"] {
+      --bg: #0c0f1a; --surface: #141a2b; --text: #e8eaf2; --muted: #9aa3b8;
+      --line: #232b42; --accent: #8ea2ff; --accent-soft: #1d2646;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 72px; }
+    body {
+      margin: 0; background: var(--bg); color: var(--text);
+      font-family: "Inter", system-ui, sans-serif; line-height: 1.65; font-size: 17px;
+    }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    img { max-width: 100%; display: block; }
+    .wrap { max-width: 1060px; margin: 0 auto; padding: 0 24px; }
+
+    /* Nav */
+    nav {
+      position: sticky; top: 0; z-index: 10;
+      background: color-mix(in srgb, var(--bg) 88%, transparent);
+      backdrop-filter: blur(10px); border-bottom: 1px solid var(--line);
+    }
+    nav .wrap { display: flex; align-items: center; justify-content: space-between; height: 60px; }
+    nav .brand { font-weight: 700; color: var(--text); }
+    nav ul { display: flex; gap: 22px; list-style: none; margin: 0; padding: 0; font-size: 15px; }
+    nav ul a { color: var(--muted); font-weight: 500; }
+    nav ul a:hover { color: var(--text); text-decoration: none; }
+    @media (max-width: 640px) { nav ul { gap: 14px; font-size: 14px; } nav .brand { display: none; } }
+
+    /* Hero */
+    .hero {
+      background: radial-gradient(1200px 500px at 80% -10%, #3b4ea8 0%, transparent 60%),
+                  linear-gradient(160deg, var(--hero-from), var(--hero-to));
+      color: #fff; padding: 96px 0 84px;
+    }
+    .eyebrow { text-transform: uppercase; letter-spacing: .14em; font-size: 13px; color: #aab6ff; font-weight: 600; }
+    .hero h1 {
+      font-family: "Fraunces", Georgia, serif; font-weight: 600;
+      font-size: clamp(2.4rem, 6vw, 4rem); line-height: 1.1; margin: 10px 0 18px;
+    }
+    .hero .tagline { font-size: clamp(1.1rem, 2.4vw, 1.4rem); max-width: 720px; color: #dfe4ff; margin: 0 0 18px; }
+    .hero p.lead { max-width: 720px; color: #b8c0e6; margin: 0 0 28px; }
+    .status {
+      display: inline-flex; align-items: center; gap: 8px; font-size: 14px;
+      background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.18);
+      padding: 6px 14px; border-radius: 999px; margin-bottom: 26px; color: #e4e8ff;
+    }
+    .status::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: #5be3a4; }
+    .btns { display: flex; flex-wrap: wrap; gap: 12px; }
+    .btn {
+      display: inline-block; padding: 11px 22px; border-radius: 10px; font-weight: 600; font-size: 15px;
+      border: 1px solid transparent; transition: transform .15s ease;
+    }
+    .btn:hover { text-decoration: none; transform: translateY(-1px); }
+    .btn.primary { background: #fff; color: #1a2250; }
+    .btn.ghost { border-color: rgba(255,255,255,.4); color: #fff; }
+
+    /* Sections */
+    section { padding: 76px 0; }
+    section + section { border-top: 1px solid var(--line); }
+    h2 { font-family: "Fraunces", Georgia, serif; font-size: 2rem; margin: 0 0 8px; font-weight: 600; }
+    .section-sub { color: var(--muted); margin: 0 0 36px; max-width: 680px; }
+
+    /* What I bring */
+    .bring { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; }
+    .bring div {
+      background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 20px;
+    }
+    .bring strong { display: block; margin-bottom: 4px; }
+    .bring span { color: var(--muted); font-size: 15px; }
+
+    /* Research */
+    .research { display: grid; gap: 28px; }
+    .card {
+      display: grid; grid-template-columns: 5fr 6fr; background: var(--surface);
+      border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden;
+    }
+    .card:nth-child(even) { grid-template-columns: 6fr 5fr; }
+    .card:nth-child(even) .thumb { order: 2; }
+    .thumb { background: var(--accent-soft); min-height: 220px; }
+    .thumb img { width: 100%; height: 100%; object-fit: cover; }
+    .card .body { padding: 28px 30px; }
+    .card h3 { margin: 0 0 10px; font-size: 1.25rem; }
+    .card p { margin: 0 0 12px; color: var(--muted); font-size: 16px; }
+    .tags { display: flex; flex-wrap: wrap; gap: 8px; margin: 14px 0 0; padding: 0; list-style: none; }
+    .tags li { font-size: 13px; background: var(--accent-soft); color: var(--accent); padding: 3px 10px; border-radius: 999px; font-weight: 500; }
+    .links { font-size: 15px; margin-top: 10px; }
+    .links a { display: block; margin-top: 4px; }
+    @media (max-width: 760px) {
+      .card, .card:nth-child(even) { grid-template-columns: 1fr; }
+      .card:nth-child(even) .thumb { order: 0; }
+      .thumb { min-height: 180px; max-height: 240px; }
+    }
+
+    /* Skills */
+    .skills { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
+    .skill {
+      background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 26px;
+    }
+    .skill h3 { margin: 0 0 8px; font-size: 1.1rem; }
+    .skill p { margin: 0 0 12px; color: var(--muted); font-size: 15.5px; }
+    .skill ul { margin: 0; padding-left: 18px; font-size: 15px; }
+
+    /* Software */
+    .software { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; align-items: center; }
+    .software img { border-radius: var(--radius); border: 1px solid var(--line); }
+    @media (max-width: 760px) { .software { grid-template-columns: 1fr; } }
+
+    /* Publications */
+    .pubs { list-style: none; padding: 0; margin: 0; }
+    .pubs li { padding: 16px 0; border-bottom: 1px solid var(--line); }
+    .pubs li:first-child { border-top: 1px solid var(--line); }
+    .pubs .title { font-weight: 600; display: block; }
+    .pubs .meta { color: var(--muted); font-size: 14.5px; }
+
+    /* Contact */
+    .contact { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; }
+    .contact a {
+      display: block; background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius);
+      padding: 20px; color: var(--text);
+    }
+    .contact a:hover { border-color: var(--accent); text-decoration: none; }
+    .contact small { display: block; color: var(--muted); text-transform: uppercase; letter-spacing: .08em; font-size: 12px; margin-bottom: 4px; }
+    .contact span { font-weight: 500; word-break: break-all; }
+
+    footer { padding: 32px 0 48px; color: var(--muted); font-size: 14px; text-align: center; }
+  </style>
+</head>
+<body id="top">
+
+  <nav>
+    <div class="wrap">
+      <a class="brand" href="#top">Mark Bishop</a>
+      <ul>
+        <li><a href="#research">Research</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#software">Software</a></li>
+        <li><a href="#publications">Publications</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <div class="wrap">
+      <div class="eyebrow">Astrophysicist · Data Scientist</div>
+      <h1>Mark Bishop</h1>
+      <p class="tagline">I extract reliable signals from noisy, incomplete data, and measure how observational limits bias what we think we know.</p>
+      <p class="lead">My research studies turbulence in astrophysical plasmas, from galaxy clusters to the solar wind. The methods (spectral analysis, Bayesian inference, stochastic modelling and simulation) transfer to any field where data are sparse, noisy or indirectly observed.</p>
+      <!-- Edit this line to match what you're seeking -->
+      <div class="status">Open to postdoctoral, industry, and collaboration opportunities</div>
+      <div class="btns">
+        <a class="btn primary" href="#contact">Get in touch</a>
+        <a class="btn ghost" href="assets/Mark_Bishop_CV.pdf">Download CV</a>
+        <a class="btn ghost" href="https://github.com/mab68" target="_blank" rel="noopener">GitHub</a>
+      </div>
+    </div>
+  </header>
+
+  <section>
+    <div class="wrap">
+      <h2>What I bring</h2>
+      <!-- <p class="section-sub">The short version, for anyone skimming.</p> -->
+      <div class="bring">
+        <div><strong>Statistical modelling</strong><span>Bayesian inference, MCMC and nested sampling for parameter estimation and model selection.</span></div>
+        <div><strong>Signal & spectral analysis</strong><span>Power spectra, structure functions and spherical harmonics on noisy, gappy data.</span></div>
+        <div><strong>Scientific computing</strong><span>Simulation, numerical solvers and open-source Python tooling.</span></div>
+        <div><strong>Clear communication</strong><span>Peer-reviewed papers, conference talks and a doctoral thesis.</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="research">
+    <div class="wrap">
+      <h2>Research</h2>
+      <!-- <p class="section-sub">Three problems, one theme: understanding how observations shape the statistics we measure.</p> -->
+
+      <div class="research">
+        <article class="card">
+          <div class="thumb"><img src="assets/img/ICM.png" alt="Intracluster medium surface brightness map and turbulence analysis" loading="lazy" /></div>
+          <div class="body">
+            <h3>Turbulence in the Intracluster Medium</h3>
+            <p>Galaxy cluster mass estimates underpin precision cosmology, but they depend on non-thermal pressure from gas motions driven by mergers, feedback and galaxy motions, usually modelled as turbulence.</p>
+            <p>I measure turbulent cascade rates, energies and characteristic scales from surface brightness fluctuations, and quantify how observational effects bias those measurements.</p>
+            <ul class="tags"><li>Turbulence</li><li>Spectral estimation</li><li>Galaxy clusters</li></ul>
+            <div class="links"><a href="https://doi.org/10.1051/epjconf/202429300007">Power spectrum estimation methods on intracluster medium surface brightness fluctuations →</a></div>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="thumb"><img src="assets/img/solar_wind_ttm.png" alt="Solar wind turbulence transport model results" loading="lazy" /></div>
+          <div class="body">
+            <h3>Solar Wind Transport Models</h3>
+            <p>How magnetohydrodynamic turbulence evolves as the solar wind flows outward matters for space weather, cosmic rays and the evolution of heliospheric fields.</p>
+            <p>I test how modelling assumptions change the predicted evolution of energies and length scales, and constrain model parameters against spacecraft observations using Bayesian methods.</p>
+            <ul class="tags"><li>Space physics</li><li>Bayesian inference</li><li>Transport modelling</li></ul>
+            <div class="links">
+              <a href="https://doi.org/10.3847/1538-4357/ad9f2f">Constraining Solar Wind Transport Model Parameters Using Bayesian Analysis →</a>
+              <a href="https://hdl.handle.net/10289/14855">Transport of turbulence in the solar wind (thesis) →</a>
             </div>
-        </nav>
-        <!-- Masthead-->
-        <header class="masthead">
-            <div class="container px-4 px-lg-5 d-flex h-100 align-items-center justify-content-center">
-                <div class="d-flex justify-content-center">
-                    <div class="text-center">
-                        <h1 class="mx-auto my-0 text-uppercase">Mark Bishop</h1>
-                        <h2 class="text-white-50 mx-auto mt-2 mb-5" id="about"></h2>
-                        <!-- <a class="btn btn-primary" href="#about">About me.</a> -->
-                         <p class="text-white-50">
-                            I am an astrophysicist and space scientist. My research interests are varied but primarily relate to turbulence in astrophysical plasmas (like the intracluster and interstellar media), as well as turbulence in the solar wind.
-                        </p>
-                        <p class="text-white-50">
-                            More specifically, I am interested in how observations influence and modify the statistics and thus bias our understanding of physical characteristics. This makes my work generalizable to many different fields of research - of which I am eager to explore. So, if any of what I work on interests you, feel free to reach out!
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </header>
-        <!-- About -->
-        <!-- <section class="about-section text-center" id="about">
-            <div class="container px-4 px-lg-5">
-                <div class="row gx-4 gx-lg-5 justify-content-center">
-                    <div class="col-lg-8">
-                        <h2 class="text-white mb-4">About Me</h2>
-                        <p class="text-white-50">
-                            I am an astrophysicist and space scientist. My research interests are varied but primarily relate to turbulence in astrophysical plasmas (like the intracluster and interstellar media), as well as turbulence in the solar wind.
-                        </p>
-                        <p class="text-white-50">
-                            More specifically, I am interested in how observations of astrophysical stuff* influence and modify the statistics and thus bias our understanding of important characteristics.
-                        </p>
-                    </div>
-                </div>
-                <img class="img-fluid" src="assets/img/ipad.png" alt="..." />
-            </div>
-        </section> -->
-        <!-- Projects-->
-        <section class="projects-section bg-light" id="projects">
-            <div class="container px-4 px-lg-5">
-                <div class="container px-4 px-lg-5 d-flex h-100 align-items-center justify-content-center">
-                    <h1 class="mx-auto my-0 text-uppercase"><p style="font-size: 100px">Projects</p></h1>
-                </div>
-                <!-- Featured Project Row-->
-                <div class="row gx-0 mb-4 mb-lg-5 align-items-center">
-                    <div class="col-xl-8 col-lg-7"><img class="img-fluid mb-3 mb-lg-0" src="assets/img/ICM.png" alt="..." /></div>
-                    <div class="col-xl-4 col-lg-5">
-                        <div class="featured-text text-center text-lg-left">
-                            <h4>Turbulence in the Intracluster Medium</h4>
-                            <p class="text-black-50 mb-0">Accurate estimation of galaxy cluster masses is a central problem in cosmology, underpinning precision constraints on structure formation and the matter content of the Universe. A key source of systematic uncertainty arises from non-thermal pressure support introduced by mergers, feedback processes, and motions of galaxies. These processes generate gas motions that are typically interpreted as turbulence.</p>
-                            <p class="text-black-50 mb-0">My research has involved measuring the turbulence cascade rates, energies, and characteristic scales and how observations bias these measurements.</p>
-                            <p class="text-black-50 mb-0">
-                                Some relevant work:
-                                <ul>
-                                <li><a href="https://doi.org/10.1051/epjconf/202429300007">Power spectrum estimation methods on intracluster medium surface brightness fluctuations</a></li>
-                                </ul>
-                            </p>
-                            </p>
-                        </div>
-                    </div>
-                </div>
-                <!-- Featured Project Row-->
-                <div class="row gx-0 mb-4 mb-lg-5 align-items-center">
-                    <div class="col-xl-8 col-lg-7"><img class="img-fluid mb-3 mb-lg-0" src="assets/img/solar_wind_ttm.png" alt="..." /></div>
-                    <div class="col-xl-4 col-lg-5">
-                        <div class="featured-text text-center text-lg-left">
-                            <h4>Solar Wind Transport Models</h4>
-                            <p class="text-black-50 mb-0">Charged particles are ejected from the sun and transported radially outward to the edge of the solar system, this plasma is called the solar wind. The evolution of magnetohydrodynamic scale fluctuations in the solar wind is a topic of long-standing interest, with relevance to various aspects of space physics including space weather, cosmic rays and their roles in connection with the global evolution of heliospheric fields.</p>
-                            <p class="text-black-50 mb-0">
-                            My research has involved investigating different modelling assumptions and the affect it has on the evolution of energies and length scales and comparing these results to observations. </p>
-                            <p class="text-black-50 mb-0">
-                                Some relevant work:
-                                <ul>
-                                    <li><a href="https://doi.org/10.3847/1538-4357/ad9f2f">Constraining Solar Wind Transport Model Parameters Using Bayesian Analysis</a></li>
-                                    <li><a href="https://hdl.handle.net/10289/14855">Transport of turbulence in the solar wind</a></li>
-                                </ul>
-                            </p>
-                            </p>
-                        </div>
-                    </div>
-                </div>
-                <!-- Featured Project Row-->
-                <div class="row gx-0 mb-4 mb-lg-5 align-items-center">
-                    <div class="col-xl-8 col-lg-7"><img class="img-fluid mb-3 mb-lg-0" src="assets/img/synchrotron.png" alt="..." /></div>
-                    <div class="col-xl-4 col-lg-5">
-                        <div class="featured-text text-center text-lg-left">
-                            <h4>Full-sky Synchrotron Emission</h4>
-                            <p class="text-black-50 mb-0">Detection of the inflationary B-mode signal remains a primary goal for confirming the inflationary model and constraining the tensor properties of the universe. However, this cosmological signal is heavily obscured by Galactic foregrounds. Synchrotron emission dominates the B-mode signal at low (radio) frequencies, while thermal dust emission dominates at higher (radio) frequencies. Accurately characterizing and removing these foregrounds is therefore critical for unbiased cosmological parameter estimation.</p>
-                        </div>
-                    </div>
-                </div>
-            </section>
-            <section class="projects-section bg-light" id="technical">
-                <div class="container px-4 px-lg-5">
-                    <div class="container px-4 px-lg-5 d-flex h-100 align-items-center justify-content-center">
-                        <h1 class="mx-auto my-0 text-uppercase"><p style="font-size: 100px">Technical Skills</p></h1>
-                    </div>
-                    <!-- Project One Row-->
-                    <div class="row gx-0 mb-5 mb-lg-0 justify-content-center">
-                        <div class="col-lg-6"><img class="img-fluid" src="assets/img/signal_processing.png" alt="..." /></div>
-                        <div class="col-lg-6">
-                            <div class="bg-black text-center h-100 project">
-                                <div class="d-flex h-100">
-                                    <div class="project-text w-100 my-auto text-center text-lg-left">
-                                        <h4 class="text-white">Signal and Image Processing</h4>
-                                        <p class="mb-0 text-white-50">Spectral analysis, spectral density estimation (Fourier and real-space methods), spherical harmonics, spatial and time-series data analysis in noisy/data-limited regimes.
-                                        <ul>
-                                            <li><a href="https://doi.org/10.1063/5.0310561">Direct power spectral density estimation from structure functions without Fourier transforms</a></li>
-                                            <li><a href="https://doi.org/10.1051/epjconf/202429300007">Power spectrum estimation methods on intracluster medium surface brightness fluctuations</a></li>
-                                        </ul>
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Project Two Row-->
-                    <div class="row gx-0 justify-content-center">
-                        <div class="col-lg-6"><img class="img-fluid" src="assets/img/bayesian_analysis.png" alt="..." /></div>
-                        <div class="col-lg-6 order-lg-first">
-                            <div class="bg-black text-center h-100 project">
-                                <div class="d-flex h-100">
-                                    <div class="project-text w-100 my-auto text-center text-lg-right">
-                                        <h4 class="text-white">Bayesian Analysis</h4>
-                                        <p class="mb-0 text-white-50">Bayesian inferencing, Markov Chain Monte Carlo (MCMC) and Nested Sampling for parameter estimation and model selection.
-                                            <ul>
-                                                <li><a href="https://doi.org/10.3847/1538-4357/ad9f2f">Constraining Solar Wind Transport Model Parameters Using Bayesian Analysis</a></li>
-                                            </ul>
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Project Three Four-->
-                    <div class="row gx-0 mb-5 mb-lg-0 justify-content-center">
-                        <div class="col-lg-6"><img class="img-fluid" src="assets/img/simulation.png" alt="..." /></div>
-                        <div class="col-lg-6">
-                            <div class="bg-black text-center h-100 project">
-                                <div class="d-flex h-100">
-                                    <div class="project-text w-100 my-auto text-center text-lg-left">
-                                        <h4 class="text-white">Modelling & Simulations</h4>
-                                        <p class="mb-0 text-white-50">Magnetohydrodynamic turbulence, turbulence transport modelling, stochastic & fractal modelling, numerical differential equation solvers.</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Project Three Row-->
-                     <div class="row gx-0 justify-content-center">
-                        <div class="col-lg-6"><img class="img-fluid" src="assets/img/kea_mock_field.png" alt="..." /></div>
-                        <div class="col-lg-6 order-lg-first">
-                            <div class="bg-black text-center h-100 project">
-                                <div class="d-flex h-100">
-                                    <div class="project-text w-100 my-auto text-center text-lg-right">
-                                        <h4 class="text-white">KEA Python Package</h4>
-                                        <p class="mb-0 text-white-50">I have developed a Python package to provide and simplify tools that are commonly used in astrophysical plasma turbulence analysis as well as testing observational processing pipelines.</p>
-                                        <ul>
-                                            <li><a href="https://www.github.com/mab68/kea">KEA on GitHub</a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- <div class="row gx-0 mb-5 mb-lg-0 justify-content-center">
-                        <div class="col-lg-6"><img class="img-fluid" src="assets/img/demo-image-01.jpg" alt="..." /></div>
-                        <div class="col-lg-6">
-                            <div class="bg-black text-center h-100 project">
-                                <div class="d-flex h-100">
-                                    <div class="project-text w-100 my-auto text-center text-lg-left">
-                                        <h4 class="text-white">KEA Python Package</h4>
-                                        <p class="mb-0 text-white-50">I have developed a Python package -<a href="https://www.github.com/mab68/kea">KEA</a>- to provide and simplify tools that are commonly used in astrophysical plasma turbulence analysis as well as testing observational processing pipelines.</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div> -->
-                </div>
-                </div>
-        </section>
-        <!-- Contact-->
-        <section class="contact-section bg-black" id="contact">
-            <div class="container px-4 px-lg-5">
-                <div class="row gx-4 gx-lg-5">
-                    <div class="col-md-4 mb-3 mb-md-0">
-                        <div class="card py-4 h-100">
-                            <div class="card-body text-center">
-                                <i class="fab fa-github text-primary mb-2"></i>
-                                <h4 class="text-uppercase m-0">GitHub</h4>
-                                <hr class="my-4 mx-auto" />
-                                <div class="small text-black-50"><a href="https://github.com/mab68" target="_blank">https://github.com/mab68</a></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4 mb-3 mb-md-0">
-                        <div class="card py-4 h-100">
-                            <div class="card-body text-center">
-                                <i class="fas fa-envelope text-primary mb-2"></i>
-                                <h4 class="text-uppercase m-0">Email</h4>
-                                <hr class="my-4 mx-auto" />
-                                <div class="small text-black-50"><a href="mailto:mark@bishop.kiwi.nz">mark@bishop.kiwi.nz</a></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4 mb-3 mb-md-0">
-                        <div class="card py-4 h-100">
-                            <div class="card-body text-center">
-                                <i class="fas fa-mobile-alt text-primary mb-2"></i>
-                                <h4 class="text-uppercase m-0">ORCID</h4>
-                                <hr class="my-4 mx-auto" />
-                                <div class="small text-black-50"><a href="https://orcid.org/0009-0002-8645-5139" target="_blank">0009-0002-8645-5139</a></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="social d-flex justify-content-center">
-                    <!-- <a class="mx-2" href="#!"><i class="fab fa-twitter"></i></a> -->
-                    <!-- <a class="mx-2" href="#!"><i class="fab fa-facebook-f"></i></a> -->
-                    <!-- <a class="mx-2" href="#!"><i class="fab fa-github"></i></a> -->
-                </div>
-            </div>
-        </section>
-        <!-- Footer-->
-        <!-- <footer class="footer bg-black small text-center text-white-50"><div class="container px-4 px-lg-5">Copyright &copy; Your Website 2023</div></footer> -->
-        <!-- Bootstrap core JS-->
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
-        <!-- Core theme JS-->
-        <script src="js/scripts.js"></script>
-        <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
-        <!-- * *                               SB Forms JS                               * *-->
-        <!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->
-        <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
-        <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
-    </body>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="thumb"><img src="assets/img/synchrotron.png" alt="Full-sky Galactic synchrotron emission map" loading="lazy" /></div>
+          <div class="body">
+            <h3>Cosmological Foreground Models</h3>
+            <p>Detecting the inflationary B-mode signal would constrain the tensor properties of the Universe, but it is heavily obscured by Galactic foregrounds: synchrotron dominates at low frequencies and thermal dust at high frequencies.</p>
+            <p>I work on developing stochastic models to provide constrained realizations of the un-observed small-scale sky. This work necessarily sits at the very beginning of future CMB missions. Providing the tools necessary to evaluate how instrument architecture influences our ability to detect primordial B-modes.</p>
+            <ul class="tags"><li>Cosmology</li><li>Galactic Foregrounds</li><li>Stochastic Modelling</li></ul>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="skills">
+    <div class="wrap">
+      <h2>Technical skills</h2>
+      <!-- <p class="section-sub">Capabilities first, with the research that demonstrates each.</p> -->
+      <div class="skills">
+        <div class="skill">
+          <h3>Signal Processing & Spectral Analysis</h3>
+          <p>Spectral density estimation with Fourier and real-space methods, spherical harmonics, and spatial and time-series analysis in noisy, data-limited regimes.</p>
+          <ul>
+            <li><a href="https://doi.org/10.1063/5.0310561">Direct power spectral density estimation from structure functions without Fourier transforms</a></li>
+            <li><a href="https://doi.org/10.1051/epjconf/202429300007">Power spectrum estimation on ICM surface brightness fluctuations</a></li>
+          </ul>
+        </div>
+        <div class="skill">
+          <h3>Bayesian Inference & Uncertainty Quantification</h3>
+          <p>Parameter estimation and model selection using MCMC and nested sampling.</p>
+          <ul>
+            <li><a href="https://doi.org/10.3847/1538-4357/ad9f2f">Constraining Solar Wind Transport Model Parameters Using Bayesian Analysis</a></li>
+          </ul>
+        </div>
+        <div class="skill">
+          <h3>Numerical Modelling & Simulation</h3>
+          <p>Magnetohydrodynamic turbulence, turbulence transport modelling, stochastic and fractal models, and numerical differential equation solvers.</p>
+        </div>
+        <div class="skill">
+          <h3>Tools</h3>
+          <p>Python (NumPy, SciPy, Matplotlib), Git and GitHub, <!-- add: HPC / Jupyter / emcee / dynesty / healpy, etc. --> LaTeX.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="software">
+    <div class="wrap">
+      <h2>Open-source software</h2>
+      <!-- <p class="section-sub">Research code, packaged so others can use it.</p> -->
+      <div class="software">
+        <img src="assets/img/kea_mock_field.png" alt="Synthetic turbulent field generated with KEA" loading="lazy" />
+        <div>
+          <h3 style="margin-top:0">KEA</h3>
+          <p>A Python package that simplifies common tools for astrophysical plasma turbulence analysis, and lets you test observational processing pipelines on synthetic data with known ground truth.</p>
+          <p><a class="btn primary" style="background:var(--accent);color:#fff" href="https://www.github.com/mab68/kea">View on GitHub</a></p>
+        </div>
+      </div>
+
+      <div class="software">
+        <div>
+          <h3 style="margin-top:0">Small-scale Synch</h3>
+          <p>A Python package that provides stochastic models of full-sky polarized Galactic synchrotron emission with free-parameters to capture non-Gaussian statistical and phase coherent behaviour.</p>
+          <p><a class="btn primary" style="background:var(--accent);color:#fff" href="https://www.github.com/mab68/small_scale_synch">View on GitHub</a></p>
+        </div>
+        <img src="assets/img/small_scale_synch.png" alt="Synthetic turbulent field generated with KEA" loading="lazy" />
+      </div>
+
+      <div class="software">
+        <div>
+          <h3 style="margin-top:0">Faucet</h3>
+          <p>Contributor to a software-defined computer network controller for production networks.</p>
+          <p><a class="btn primary" style="background:var(--accent);color:#fff" href="https://github.com/faucetsdn/faucet">View on GitHub</a></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="publications">
+    <div class="wrap">
+      <h2>Publications</h2>
+      <p class="section-sub">Selected work. Full list on <a href="https://orcid.org/0009-0002-8645-5139">ORCID</a>.</p>
+      <!-- Add authors, year and venue to each entry -->
+      <ul class="pubs">
+        <li>
+          <a class="title" href="https://doi.org/10.26686/vjyj-1gsq">Systematic and Scale-Dependent Biases in Spectral Power Estimations of Astrophysical Plasma Observations: Implications for the Intracluster Medium</a>
+          <span class="meta">Doctoral thesis · Victoria University of Wellington</span>
+        </li>
+        <li>
+          <a class="title" href="https://doi.org/10.1063/5.0310561">Direct power spectral density estimation from structure functions without Fourier transforms</a>
+          <span class="meta">DOI: 10.1063/5.0310561</span>
+        </li>
+        <li>
+          <a class="title" href="https://doi.org/10.3847/1538-4357/ad9f2f">Constraining Solar Wind Transport Model Parameters Using Bayesian Analysis</a>
+          <span class="meta">The Astrophysical Journal · DOI: 10.3847/1538-4357/ad9f2f</span>
+        </li>
+        <li>
+          <a class="title" href="https://doi.org/10.1051/epjconf/202429300007">Power spectrum estimation methods on intracluster medium surface brightness fluctuations</a>
+          <span class="meta">EPJ Web of Conferences · DOI: 10.1051/epjconf/202429300007</span>
+        </li>
+        <li>
+          <a class="title" href="https://hdl.handle.net/10289/14855">Transport of turbulence in the solar wind</a>
+          <span class="meta">Master's thesis · University of Waikato</span>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="wrap">
+      <h2>Get in touch</h2>
+      <!-- <p class="section-sub">If any of this overlaps with what you work on, I'd be glad to hear from you.</p> -->
+      <div class="contact">
+        <a href="mailto:mark@bishop.kiwi.nz"><small>Email</small><span>mark@bishop.kiwi.nz</span></a>
+        <a href="https://github.com/mab68" target="_blank" rel="noopener"><small>GitHub</small><span>github.com/mab68</span></a>
+        <a href="https://orcid.org/0009-0002-8645-5139" target="_blank" rel="noopener"><small>ORCID</small><span>0009-0002-8645-5139</span></a>
+        <!-- <a href="https://www.linkedin.com/in/YOUR-HANDLE" target="_blank" rel="noopener"><small>LinkedIn</small><span>Your name</span></a> -->
+        <!-- <a href="https://scholar.google.com/citations?user=YOUR-ID" target="_blank" rel="noopener"><small>Google Scholar</small><span>Your name</span></a> -->
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="wrap">© Mark Bishop</div>
+  </footer>
+
+</body>
 </html>
